@@ -1,0 +1,55 @@
+-- Apple Financial Analysis
+-- SQL analysis of financial data for 2009-2024
+
+
+-- 1. First 5 records
+SELECT *
+FROM apple_financials
+LIMIT 5;
+
+
+-- 2. Years with the highest revenue
+SELECT
+    Year,
+    "Revenue (millions)" AS Revenue
+FROM apple_financials
+ORDER BY "Revenue (millions)" DESC
+LIMIT 5;
+
+
+-- 3. Years with the highest net income
+SELECT
+    Year,
+    "Net Income (millions)" AS Net_Income
+FROM apple_financials
+ORDER BY "Net Income (millions)" DESC
+LIMIT 5;
+
+
+-- 4. Revenue, net income and net margin
+SELECT
+    Year,
+    "Revenue (millions)" AS Revenue,
+    "Net Income (millions)" AS Net_Income,
+    ROUND(
+        "Net Income (millions)" * 100.0
+        / "Revenue (millions)",
+        2
+    ) AS Net_Margin
+FROM apple_financials
+ORDER BY Year;
+
+
+-- 5. Years with the highest net margin
+SELECT
+    Year,
+    "Revenue (millions)" AS Revenue,
+    "Net Income (millions)" AS Net_Income,
+    ROUND(
+        "Net Income (millions)" * 100.0
+        / "Revenue (millions)",
+        2
+    ) AS Net_Margin
+FROM apple_financials
+ORDER BY Net_Margin DESC
+LIMIT 5;
